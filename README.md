@@ -5,13 +5,8 @@
 
 Python implementation of ***DataSculpt***, a framework for constructing long-context sequences through a multi-objective partition allocation strategy. 
 The capability of LLMs to effectively process extended contexts has not consistently reached its potential, emphasizing the necessity for novel methodologies to bolster their extended-context modeling proficiency. 
-<<<<<<< HEAD
 DataSculpt strategically aligns multiple objectives including relevance, homogeneity, integrity, and computational efficiency to optimize the data structure for long-context training.  
 We achieve improvements on a [7B model](https://github.com/BaichuanSEED/BaichuanSEED.github.io) including an 18.09% increase in retrieval augmentation, 21.23% in summarization, 21.27% in reading comprehension, and a 3.81% rise in code completion, all while maintaining the models' general proficiency with a 4.88\% enhancement. 
-=======
-DataSculpt strategically aligns multiple objectives including relevance, homogeneity, integrity, and computational efficiency to optimize the data structure for long-context training. 
-We achieve improvements on a 7B model including an 18.09% increase in retrieval augmentation, 21.23% in summarization, 21.27% in reading comprehension, and a 3.81% rise in code completion, all while maintaining the models' general proficiency with a 4.88\% enhancement. 
->>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
 The graphic below provides an overview of DataSculpt. Check out the [paper](https://arxiv.org/abs/2409.00997) for more details. 
 This codebase outputs constructed context sequences given a text dataset.
 
