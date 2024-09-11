@@ -1,0 +1,6 @@
+ray
+numpy
+tqdm
+ujson
+FlagEmbedding
+faiss
