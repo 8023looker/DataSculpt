@@ -1,5 +1,9 @@
 # Phase 0: data preprocessing
+<<<<<<< HEAD
 # doc truncate && embedding
+=======
+# doctruncate && embedding
+>>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
 import os
 import json
 import ujson

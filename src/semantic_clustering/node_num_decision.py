@@ -45,23 +45,32 @@ def build_sample_index(args): # need args[0], args[1]
 def compute_density(args): # need args[0], args[1]
     index = faiss.read_index(args[1]) # read FAISS index
     
+<<<<<<< HEAD
     # get total line number
     line_num = subprocess.run(['wc', '-l', args[0]], stdout=subprocess.PIPE)
     line_count = int(line_num.stdout.split()[0])
     print(f"total line number: {line_count}")
     
+=======
+>>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
     part_density = 0
     with open(args[0], "r", encoding="utf-8", errors="ignore") as fin:
         for idx, line in enumerate(fin):
             try:
                 line_dict = ujson.loads(line.replace("\n", "").replace('\\/', '/'))
                 search_vector = np.array([ast.literal_eval(line_dict["vector_encoded"])])
+<<<<<<< HEAD
                 D, I = index.search(search_vector, line_count)
                 line_dict["cluster_distance"] = float(D[0][0])
                 
                 idx_density = np.mean(np.array([float(x) for x in D[0]])) # average distance for the current vector
                 
                 part_density = (idx_density + part_density * idx) / (idx + 1)
+=======
+                D, I = index.search(search_vector, 2) # nearest 2
+                line_dict["cluster_distance"] = float(D[0][0])
+                part_density = (line_dict["cluster_distance"] + part_density * idx) / (idx + 1)
+>>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
             
             except ValueError as e:
                 print(f"JSON 解析错误: {e}")

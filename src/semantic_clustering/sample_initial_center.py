@@ -1,5 +1,9 @@
 # Phase 1. Semantic Clustering
+<<<<<<< HEAD
 # 1.2. initial cluster center
+=======
+# 1.2. initial cluster center (sample data)
+>>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
 
 import numpy as np
 from tqdm import tqdm
@@ -48,6 +52,7 @@ def process_incremental(status_all, status_dict):
     status_all.append(status_dict)
     return status_all
 
+<<<<<<< HEAD
 def merge_sample_nodes(sample_nodes_folder, output_merged_folder):
     # merge all sample nodes
     with open(output_merged_folder + "sample_nodes_0.jsonl", "a", encoding="utf-8", errors="ignore") as fout:
@@ -64,11 +69,19 @@ def merge_sample_nodes(sample_nodes_folder, output_merged_folder):
 
 if __name__ == "__main__":
     ray_log = get_logger("ray_initial_center", "ray_initial_center.log")
+=======
+if __name__ == "__main__":
+    ray_log = get_logger("ray_faiss_index", "ray_initial_center.log")
+>>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
     ray_log.info("--- start new ray task ---")
     ray.init(address="auto")
     
     raw_data_folder = "/path/to/embedding_folder/" # path to the embedding folder (/xxx/DataSculpt/data_sample/embedding_rs/)
+<<<<<<< HEAD
     output_root_folder, output_merged_folder = "/path/to/sample_nodes/", "/path/to/merged_nodes/" # /xxx/DataSculpt/data_sample/faiss/center_nodes/, /xxx/DataSculpt/data_sample/intermediate_cluster/
+=======
+    output_root_folder = "/path/to/sample_nodes/" # /xxx/DataSculpt/data_sample/faiss/center_nodes/
+>>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
     os.makedirs(output_root_folder, exist_ok=True)
 
     args_list = []
@@ -89,6 +102,9 @@ if __name__ == "__main__":
         ray_log.info(
             f"total {len(args_list)} tasks, {len(rs_ids)} tasks waiting, {len(status_all)} tasks done."
         )
+<<<<<<< HEAD
 
     # merge all sample nodes
     merge_sample_nodes(output_root_folder, output_merged_folder)
+=======
+>>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
