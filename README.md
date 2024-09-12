@@ -38,25 +38,24 @@ bash run_datasculpt_pipeline.sh 16000 0.5 0.5 5 # context_window delta epsilon i
 {
   "content": "This is an example of document content.",
   "docid": "falcon_talks.cam.acuk_0b1809",
-  ...
+  "...": "..."
 }
 ```
 #### Output
 ```json
 {
-  "total_token_num": 10,
+  "total_token_num": 2,
   "docs": [{
       "content": "This is an example of document content.",
       "docid": "falcon_talks.cam.acuk_0b1809",
-      "vector_encoded": [0.142877, ...],
-      ...
+      "vector_encoded": [0.142877, "...", "..."],
+      "...": "..."
     },{
       "content": "This is an example of document content.",
       "docid": "falcon_talks.cam.acuk_0b1809",
-      "vector_encoded": [0.142877, ...],
-      ...
-    },
-    ...
+      "vector_encoded": [0.142877, "...", "..."],
+      "...": "..."
+    }
   ]
 }
 ```
