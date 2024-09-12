@@ -12,27 +12,57 @@ This codebase outputs constructed context sequences given a text dataset.
 
 ![Illustration of DataSculpt.](figures/illustration_v2.svg)
 
-## Getting started
+<!-- ## Getting started -->
+## Installation
 To get started, please clone the repo and install it:
-```
+```bash
 git clone git@github.com:8023looker/DataSculpt.git
-
-conda create -n datasculpt python=3.10
+cd docker/
+DOCKER_BUILDKIT=1 docker build -f Dockerfile -t datasculpt/emr-serverless-spark .
+```
+<!-- conda create -n datasculpt python=3.10
 conda activate datasculpt
-pip install -r requirements.txt
-```
+pip install -r requirements.txt -->
 <!-- conda install -c pytorch/label/nightly -c nvidia faiss-gpu=1.7.4 -->
- 
 
-## Running DataSculpt on your own dataset
-To run DataSculpt on your own dataset, provide data in the following format, refering to `./data_sample/input/part-00000.json`:
+## Construct Pretraining Data using DataSculpt
+We provide an example file in `./data_sample/input/` to demonstrate our pipeline, which is in jsonl format (`./data_sample/input/part-00000`) with each line representing one document.
+```bash
+cd src/
+bash run_datasculpt_pipeline.sh 16000 0.5 0.5 5 # context_window delta epsilon iter_T
 ```
+
+### Data Format
+#### Input
+```json
 {
   "content": "This is an example of document content.",
   "docid": "falcon_talks.cam.acuk_0b1809",
   ...
 }
 ```
+#### Output
+```json
+{
+  "total_token_num": 10,
+  "docs": [{
+      "content": "This is an example of document content.",
+      "docid": "falcon_talks.cam.acuk_0b1809",
+      "vector_encoded": [0.142877, ...],
+      ...
+    },{
+      "content": "This is an example of document content.",
+      "docid": "falcon_talks.cam.acuk_0b1809",
+      "vector_encoded": [0.142877, ...],
+      ...
+    },
+    ...
+  ]
+}
+```
+<!-- #### [Optional] Running DataSculpt on your own dataset -->
+[Optional] To run DataSculpt on your own dataset, provide data as the [input](#input) format, refering to `./data_sample/input/part-00000`.
+
 
 ## Experimental Results <img src="figures/dog_head.svg" width="20">
 We post-train a [7B model](https://github.com/BaichuanSEED/BaichuanSEED.github.io) using the concanated sequences from DataSculpt with 16K, 32K and 64K context lengths and compare it to the baselines (random sampling and [ICLM](https://github.com/swj0419/in-context-pretraining)).

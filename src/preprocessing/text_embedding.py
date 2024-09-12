@@ -1,11 +1,7 @@
 # Phase 0: data preprocessing
-<<<<<<< HEAD
 # doc truncate && embedding
-=======
-# doctruncate && embedding
->>>>>>> 75c05ce66d10d9b35b3374f5a5ba06a3c0e10d77
+# depend on GPU ray cluster
 import os
-import json
 import ujson
 from pathlib import Path
 import zipfile
@@ -99,7 +95,7 @@ class ModelBGEM3:
         with open(Path(i_file), 'r', encoding='utf-8', errors='ignore') as fin, open(Path(o_file), 'w', encoding = 'utf-8') as fout:
             doc = fin.readlines()
             rs_list = self.get_paragraphs(doc) # api file_content
-            json.dump(rs_list, fout, ensure_ascii=False)
+            ujson.dump(rs_list, fout, ensure_ascii=False)
         
         return status_dict 
 
@@ -111,6 +107,8 @@ def main():
     
     input_folder = "/your/input/data_folder_path/" # your input data folder path ("xxx/DataSculpt/data_sample/input/")
     output_root_folder = "/your/output/data_folder_path/" # your output data folder path ("xxx/DataSculpt/data_sample/embedding_rs/")
+    
+    os.makedirs(output_root_folder, exist_ok=True)
     
     args_list = []
     for dirpath, dirnames, filenames in os.walk(input_folder):

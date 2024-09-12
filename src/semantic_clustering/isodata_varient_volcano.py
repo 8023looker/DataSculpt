@@ -167,8 +167,8 @@ class ISODATAVarient:
             
         # Save (update) the index to disk
         faiss.write_index(index, self.faiss_output_folder + "faiss_index")
-  
-
+    
+    
     def cluster_merge(self):
         """ merge clusters """
         node_info_path = self.get_node_info_path()
@@ -233,12 +233,12 @@ def process_incremental(status_all, status_dict):
 
 if __name__ == "__main__":
     delta, epsilon, iter_T = sys.argv[1:] # delta: distance threshold, epsilon: alteration threshold, iter_T: maximum iterations
-    
+    # delta, epsilon, iter_T = 0.1, 0.1, 10
     ray_log = get_logger("ray_faiss_index", "ray_isodata_varient.log")
     ray_log.info("--- start new ray task ---")
-    ray.init(address="auto")
+    # ray.init(address="auto")
     
-    output_root_folder = "/your/output/data_folder_path/" # your output data folder path ("xxx/DataSculpt/data_sample/intermediate_cluster/")
+    output_root_folder = "/data_cfs_new/keerlu/src/DataSculpt/data_sample/intermediate_cluster/" # your output data folder path ("xxx/DataSculpt/data_sample/intermediate_cluster/")
     os.makedirs(output_root_folder, exist_ok=True)
     
     for t in range(int(iter_T)): # iter_T > 1
@@ -248,12 +248,12 @@ if __name__ == "__main__":
         cluster_output_folder: "/xxx/DataSculpt/data_sample/cluster_rs/",
         raw_data_folder: "/xxx/DataSculpt/data_sample/embedding_rs/" if t == 0 else "/xxx/DataSculpt/data_sample/intermediate_cluster/"
         """
-        faiss_output_folder, intermediate_cluster_output_folder, cluster_output_folder = "/your/output1/data_folder_path/", "/your/output2/data_folder_path/", "/your/output3/data_folder_path/"
+        faiss_output_folder, intermediate_cluster_output_folder, cluster_output_folder = "/data_cfs_new/keerlu/src/DataSculpt/data_sample/faiss/", "/data_cfs_new/keerlu/src/DataSculpt/data_sample/intermediate_cluster/", "/data_cfs_new/keerlu/src/DataSculpt/data_sample/cluster_rs/"
         os.makedirs(faiss_output_folder, exist_ok=True)
         os.makedirs(intermediate_cluster_output_folder, exist_ok=True)
         os.makedirs(cluster_output_folder, exist_ok=True)
 
-        raw_data_folder = "/your/input/data_folder_path/" # your input data folder path ("xxx/DataSculpt/data_sample/embedding_rs/")
+        raw_data_folder = "/data_cfs_new/keerlu/src/DataSculpt/data_sample/embedding_rs/" # your input data folder path ("xxx/DataSculpt/data_sample/embedding_rs/")
         
         ISODATAVarient_obj = ISODATAVarient((
                                 faiss_output_folder,
