@@ -14,6 +14,10 @@ echo $ITER_T
 python ./preprocessing/text_embedding.py
 
 # semantic clustering + greedy MOCO policy
+python ./semantic_clustering/node_num_decision.py
+
+python ./semantic_clustering/sample_initial_center.py
+
 python ray_serverless.py \
         ${CONTEXT_LENGTH} \
         ${DELTA} \
