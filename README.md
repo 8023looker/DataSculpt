@@ -73,8 +73,8 @@ We post-train a [7B model](https://github.com/BaichuanSEED/BaichuanSEED.github.i
 If this was useful to you, please cite the [paper](https://arxiv.org/abs/2409.00997):
 ```
 @misc{lu2024datasculptcraftingdatalandscapes,
-      title={DataSculpt: Crafting Data Landscapes for LLM Post-Training through Multi-objective Partitioning}, 
-      author={Keer Lu and Zheng Liang and Xiaonan Nie and Da Pan and Shusen Zhang and Keshi Zhao and Weipeng Chen and Zenan Zhou and Guosheng Dong and Wentao Zhang and Bin Cui},
+      title={DataSculpt: Crafting Data Landscapes for Long-Context LLMs through Multi-Objective Partitioning}, 
+      author={Keer Lu and Xiaonan Nie and Zheng Liang and Da Pan and Shusen Zhang and Keshi Zhao and Weipeng Chen and Zenan Zhou and Guosheng Dong and Bin Cui and Wentao Zhang},
       year={2024},
       eprint={2409.00997},
       archivePrefix={arXiv},
